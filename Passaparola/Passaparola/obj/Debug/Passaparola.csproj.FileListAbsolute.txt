@@ -1,0 +1,17 @@
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\bin\Debug\Passaparola.exe.config
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\bin\Debug\Passaparola.exe
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\bin\Debug\Passaparola.pdb
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\obj\Debug\Passaparola.csproj.AssemblyReference.cache
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\obj\Debug\Passaparola.Form1.resources
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\obj\Debug\Passaparola.Properties.Resources.resources
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\obj\Debug\Passaparola.csproj.GenerateResource.cache
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\obj\Debug\Passaparola.csproj.CoreCompileInputs.cache
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\obj\Debug\Passaparola.exe
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\obj\Debug\Passaparola.pdb
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\bin\Debug\DataAccessLayer.dll
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\bin\Debug\EntityLayer.dll
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\bin\Debug\LogicLayer.dll
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\bin\Debug\DataAccessLayer.pdb
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\bin\Debug\EntityLayer.pdb
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\bin\Debug\LogicLayer.pdb
+D:\Projeler\C#Projeler\GitProje\Passaparola\Passaparola\Passaparola\obj\Debug\Passaparola.csproj.CopyComplete
