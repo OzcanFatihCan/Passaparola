@@ -28,9 +28,7 @@ namespace Passaparola
         {
             Harfler();
             sorular = LogicSorular.LLSorular();
-            textBox1.Enabled = false;
-
-            
+            textBox1.Enabled = false;            
         }
 
         private void Harfler()
@@ -76,48 +74,129 @@ namespace Passaparola
                 Controls.Add(yuvarlakDugme);
             }
 
-
-            // Ana yuvarlak butonların çevresinde bir yuvarlak oluştur
-            Button anaYuvarlak = new Button();
-            anaYuvarlak.Size = new Size(340, 340);
-            anaYuvarlak.Location = new Point(93, 104); // Formun ortasına yerleştir
-            anaYuvarlak.FlatStyle = FlatStyle.Flat;
-            anaYuvarlak.BackColor = Color.Gray;
-            anaYuvarlak.FlatAppearance.BorderSize = 0;
-            anaYuvarlak.Cursor = Cursors.Hand;
-
-            System.Drawing.Drawing2D.GraphicsPath anaPath = new System.Drawing.Drawing2D.GraphicsPath();
-            anaPath.AddEllipse(0, 0, anaYuvarlak.Width, anaYuvarlak.Height);
-            anaYuvarlak.Font = new Font(anaYuvarlak.Font.FontFamily, 48, anaYuvarlak.Font.Style);
-            anaYuvarlak.Region = new Region(anaPath);
-            anaYuvarlak.Click += AnaYuvarlak_Click;
-
-            // Ana yuvarlak butonu form'a ekle
-            Controls.Add(anaYuvarlak);
+         
         }
       
+        private void AnaYuvarlak(char harf)
+        {
+            Button anaYuvarlak = new Button();
+            if (anaYuvarlak!=null)
+            {
+                // Ana yuvarlak butonların çevresinde bir yuvarlak oluştur
+               
+                anaYuvarlak.Size = new Size(340, 340);
+                anaYuvarlak.Location = new Point(93, 104); // Formun ortasına yerleştir
+                anaYuvarlak.FlatStyle = FlatStyle.Flat;
+                anaYuvarlak.BackColor = Color.Gray;
+                anaYuvarlak.FlatAppearance.BorderSize = 0;
+                anaYuvarlak.Cursor = Cursors.Hand;
+               
+
+                System.Drawing.Drawing2D.GraphicsPath anaPath = new System.Drawing.Drawing2D.GraphicsPath();
+                anaPath.AddEllipse(0, 0, anaYuvarlak.Width, anaYuvarlak.Height);
+                anaYuvarlak.Font = new Font(anaYuvarlak.Font.FontFamily, 48, anaYuvarlak.Font.Style);
+                anaYuvarlak.Region = new Region(anaPath);
+                anaYuvarlak.Click += AnaYuvarlak_Click;
+
+                // Ana yuvarlak butonu form'a ekle
+                Controls.Add(anaYuvarlak);
+
+            }
+            anaYuvarlak.Text = harf.ToString();
+            anaYuvarlak.BackColor= Color.Gray;
+        }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             linkLabel1.Text = "Sonraki";
+            LblDakika.Text = "00";
             textBox1.Enabled = true;
             textBox1.Text = "";
             soruno++;
             this.Text = soruno + ". Soru";
+            timer1.Start();
+            saniye = 0;
+            dakika = 0;
 
             if (soruno <= sorular.Count)
             {
                 richTextBox1.Text = sorular[soruno - 1].SORU;
                 RenkAyarla(sorular[soruno - 1].CEVAP[0], Color.Violet) ;
                 linkLabel1.Enabled = false;
-                
-                
+               
+               // AnaYuvarlak(sorular[soruno - 1].CEVAP[0]);
             }
             else
             {
                 MessageBox.Show("Sorular Bitti!");
             }
+        }
 
+       
+
+        int dakika = 0, saniye = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            saniye++;
+            LblSaniye.Text=saniye.ToString();
+            if (saniye==60)
+            {
+                dakika++;
+                LblDakika.Text = dakika.ToString();
+                saniye = 0;
+                if (soruno <= sorular.Count)
+                {
+                    string veritabaniCevap = sorular[soruno - 1].CEVAP;
+                    string kullaniciCevap = textBox1.Text.Trim();
+                    LblSaniye.Text = "00";
+                    timer1.Stop();
+
+                    if (kullaniciCevap.Equals(veritabaniCevap, StringComparison.OrdinalIgnoreCase))
+                    {
+                        RenkAyarla(sorular[soruno - 1].CEVAP[0], Color.Green);
+                        dogru++;
+                        label3.Text = dogru.ToString();
+                        linkLabel1.Enabled = true;
+                        textBox1.Enabled = false;                   
+                    }
+                    else
+                    {
+                        RenkAyarla(sorular[soruno - 1].CEVAP[0], Color.Red);
+                        yanlis++;
+                        label4.Text = yanlis.ToString();
+                        linkLabel1.Enabled = true;
+                        textBox1.Enabled = false;                    
+                    }
+                }
+            }
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                linkLabel1.Enabled = true;
+                textBox1.Enabled = false;
+                timer1.Stop();
+                if (soruno <= sorular.Count)
+                {
+                    string veritabaniCevap = sorular[soruno - 1].CEVAP;
+                    string kullaniciCevap = textBox1.Text.Trim();
+
+                    if (kullaniciCevap.Equals(veritabaniCevap, StringComparison.OrdinalIgnoreCase))
+                    {
+                        RenkAyarla(sorular[soruno - 1].CEVAP[0], Color.Green);
+                        dogru++;
+                        label3.Text = dogru.ToString();                      
+                    }
+                    else
+                    {
+                        RenkAyarla(sorular[soruno - 1].CEVAP[0], Color.Red);
+                        yanlis++;
+                        label4.Text = yanlis.ToString();
+                    }
+                }
+            }
         }
 
         private class Soru
@@ -145,33 +224,7 @@ namespace Passaparola
             }
         }
 
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-            if (e.KeyCode==Keys.Enter)
-            {
-                linkLabel1.Enabled = true;
-                textBox1.Enabled = false;
-                if (soruno<=sorular.Count)
-                {
-                    string veritabaniCevap = sorular[soruno - 1].CEVAP;
-                    string kullaniciCevap = textBox1.Text.Trim();
-
-                    if (kullaniciCevap.Equals(veritabaniCevap, StringComparison.OrdinalIgnoreCase))
-                    {
-                        RenkAyarla(sorular[soruno - 1].CEVAP[0], Color.Green);
-                        dogru++;
-                        label3.Text = dogru.ToString();
-                    }
-                    else
-                    {
-                        RenkAyarla(sorular[soruno - 1].CEVAP[0], Color.Red);
-                        yanlis++;
-                        label4.Text = yanlis.ToString();
-                    }
-                }
-            }
-        }
+       
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
@@ -196,6 +249,10 @@ namespace Passaparola
         private void AnaYuvarlak_Click(object sender, EventArgs e)
         {
             //ANA YUVARLAK TIKLAMA İŞLEVİ
+          
         }
+
+      
     }
 }
+

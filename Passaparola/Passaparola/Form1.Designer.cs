@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -40,10 +41,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.LblDakika = new System.Windows.Forms.Label();
+            this.LblSaniye = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -51,7 +58,7 @@
             this.richTextBox1.Enabled = false;
             this.richTextBox1.Location = new System.Drawing.Point(6, 15);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(435, 270);
+            this.richTextBox1.Size = new System.Drawing.Size(435, 245);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
@@ -163,6 +170,52 @@
             this.pictureBox1.MouseLeave += new System.EventHandler(this.pictureBox1_MouseLeave);
             this.pictureBox1.MouseHover += new System.EventHandler(this.pictureBox1_MouseHover);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.LblSaniye);
+            this.panel1.Controls.Add(this.LblDakika);
+            this.panel1.Location = new System.Drawing.Point(207, 505);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(114, 44);
+            this.panel1.TabIndex = 5;
+            // 
+            // LblDakika
+            // 
+            this.LblDakika.AutoSize = true;
+            this.LblDakika.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.LblDakika.Location = new System.Drawing.Point(21, 12);
+            this.LblDakika.Name = "LblDakika";
+            this.LblDakika.Size = new System.Drawing.Size(32, 22);
+            this.LblDakika.TabIndex = 0;
+            this.LblDakika.Text = "00";
+            // 
+            // LblSaniye
+            // 
+            this.LblSaniye.AutoSize = true;
+            this.LblSaniye.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.LblSaniye.Location = new System.Drawing.Point(62, 12);
+            this.LblSaniye.Name = "LblSaniye";
+            this.LblSaniye.Size = new System.Drawing.Size(32, 22);
+            this.LblSaniye.TabIndex = 1;
+            this.LblSaniye.Text = "00";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label7.Location = new System.Drawing.Point(50, 12);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(17, 22);
+            this.label7.TabIndex = 2;
+            this.label7.Text = ":";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
@@ -170,6 +223,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(54)))), ((int)(((byte)(80)))));
             this.ClientSize = new System.Drawing.Size(984, 561);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -189,6 +243,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -206,6 +262,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label LblSaniye;
+        private System.Windows.Forms.Label LblDakika;
     }
 }
 
