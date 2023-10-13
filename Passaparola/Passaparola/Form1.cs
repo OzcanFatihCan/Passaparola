@@ -15,7 +15,7 @@ namespace Passaparola
     public partial class Form1 : Form
     {
 
-        private List<EntitySorular> sorular;
+        private List<EntitySorular> sorular;       
         private char[] harfler = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'İ', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'Y', 'Z' };
         int soruno = 0, dogru = 0, yanlis = 0;
 
@@ -28,7 +28,8 @@ namespace Passaparola
         {
             Harfler();
             sorular = LogicSorular.LLSorular();
-            textBox1.Enabled = false;            
+            textBox1.Enabled = false;
+            AnaYuvarlak();
         }
 
         private void Harfler()
@@ -72,38 +73,30 @@ namespace Passaparola
                 yuvarlakDugme.TextAlign = ContentAlignment.MiddleCenter;
 
                 Controls.Add(yuvarlakDugme);
-            }
-
-         
+            }         
         }
       
-        private void AnaYuvarlak(char harf)
+        private void AnaYuvarlak()
         {
             Button anaYuvarlak = new Button();
-            if (anaYuvarlak!=null)
-            {
-                // Ana yuvarlak butonların çevresinde bir yuvarlak oluştur
-               
-                anaYuvarlak.Size = new Size(340, 340);
-                anaYuvarlak.Location = new Point(93, 104); // Formun ortasına yerleştir
-                anaYuvarlak.FlatStyle = FlatStyle.Flat;
-                anaYuvarlak.BackColor = Color.Gray;
-                anaYuvarlak.FlatAppearance.BorderSize = 0;
-                anaYuvarlak.Cursor = Cursors.Hand;
-               
+            // Ana yuvarlak butonların çevresinde bir yuvarlak oluştur
+            anaYuvarlak.Size = new Size(340, 340);
+            anaYuvarlak.Location = new Point(93, 104); // Formun ortasına yerleştir
+            anaYuvarlak.FlatStyle = FlatStyle.Flat;
+            anaYuvarlak.BackColor = Color.Gray;
+            anaYuvarlak.FlatAppearance.BorderSize = 0;
+            anaYuvarlak.Cursor = Cursors.Hand;
+            anaYuvarlak.Text = "Passaparola";
 
-                System.Drawing.Drawing2D.GraphicsPath anaPath = new System.Drawing.Drawing2D.GraphicsPath();
-                anaPath.AddEllipse(0, 0, anaYuvarlak.Width, anaYuvarlak.Height);
-                anaYuvarlak.Font = new Font(anaYuvarlak.Font.FontFamily, 48, anaYuvarlak.Font.Style);
-                anaYuvarlak.Region = new Region(anaPath);
-                anaYuvarlak.Click += AnaYuvarlak_Click;
+            System.Drawing.Drawing2D.GraphicsPath anaPath = new System.Drawing.Drawing2D.GraphicsPath();
+            anaPath.AddEllipse(0, 0, anaYuvarlak.Width, anaYuvarlak.Height);
+            anaYuvarlak.Font = new Font(anaYuvarlak.Font.FontFamily, 40, anaYuvarlak.Font.Style);
+            anaYuvarlak.Region = new Region(anaPath);
+            anaYuvarlak.Click += AnaYuvarlak_Click;
 
-                // Ana yuvarlak butonu form'a ekle
-                Controls.Add(anaYuvarlak);
-
-            }
-            anaYuvarlak.Text = harf.ToString();
-            anaYuvarlak.BackColor= Color.Gray;
+            // Ana yuvarlak butonu form'a ekle
+            Controls.Add(anaYuvarlak);
+          
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -123,16 +116,13 @@ namespace Passaparola
                 richTextBox1.Text = sorular[soruno - 1].SORU;
                 RenkAyarla(sorular[soruno - 1].CEVAP[0], Color.Violet) ;
                 linkLabel1.Enabled = false;
-               
-               // AnaYuvarlak(sorular[soruno - 1].CEVAP[0]);
+      
             }
             else
             {
                 MessageBox.Show("Sorular Bitti!");
             }
-        }
-
-       
+        }      
 
         int dakika = 0, saniye = 0;
         private void timer1_Tick(object sender, EventArgs e)
